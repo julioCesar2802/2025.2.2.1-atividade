@@ -1,42 +1,175 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
+/* Reset básico */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-#cores{
-  border: 2px solid #000000;
-  border-radius: 10px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background-color: rgb(102, 163, 255) 
+/* Variáveis de tema */
+:root{
+  --primary-500: #2b6ef6;
+  --primary-300: #66a3ff;
+  --bg-start: #0b3b91;
+  --bg-end: #0055ff;
+  --card-bg: rgba(255,255,255,0.95);
+  --muted: #6b7280;
+  --radius: 12px;
+  --gap: 1.25rem;
+  --max-width: 1100px;
+  --font-sans: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Playfair Display', serif;
 }
 
-#tipografia{
-  border: 2px solid black;
-  border-radius: 10px;
-  background-color: lightgray;
-  font-family: Arial, Helvetica, sans-serif;
-  
-}
-
-#backgrounds{
-  border: 2px solid black;
-  border-radius: 10px;
-  background-color: rgba(242, 242, 242, 1)
-}
-
-#gradientes{
-  border: 2px solid black;
-  border-radius: 10px;
-  background-color: hsl(0, 0%, 10%);
-}
-
+/* Layout base */
+html, body{height:100%;}
 body{
-  background-color: #0055FF;
-  font-weight: normal;
-  line-height: 1;
+  font-family: var(--font-sans);
+  color: #04223a;
+  background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 60%);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  min-height:100vh;
+  padding: 3rem 2rem;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
 }
+
+/* Cabeçalho */
+.header-principal{
+  width:100%;
+  max-width: var(--max-width);
+  text-align:center;
+  margin-bottom: 1.25rem;
+  color: white;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(0,0,0,0.04));
+  box-shadow: 0 6px 18px rgba(3,10,40,0.18);
+}
+.header-principal h1{font-family:var(--font-serif); font-weight:700; font-size:1.5rem; margin-bottom:.25rem}
+.header-principal .subtitulo{color:rgba(255,255,255,0.92); font-size:0.95rem}
+
+/* Container responsivo */
+.container{
+  width:100%;
+  max-width: var(--max-width);
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--gap);
+}
+
+/* Seções/card padrão */
+.secao{
+  padding: 1rem;
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  box-shadow: 0 8px 22px rgba(3,10,40,0.12);
+  border: 1px solid rgba(10,20,40,0.04);
+  min-height: 140px;
+  display:flex;
+  flex-direction:column;
+  gap: .6rem;
+}
+.secao h2{font-size:1.05rem; color:#07243d; font-weight:600}
+
+/* Seções específicas */
+#cores{ background: linear-gradient(135deg, var(--primary-300), var(--primary-500)); color: white }
+#tipografia{ background: linear-gradient(180deg, #ffffff, #f7f9fc); color: #04223a }
+#backgrounds{ background: linear-gradient(180deg, #f6f7fb, #e9eefb); color: #04223a }
+#gradientes{ background: linear-gradient(135deg, #111 0%, #333 100%); color: #fff }
+
+/* Grades e cartões internos */
+.exemplo-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: .8rem }
+.card{ background: rgba(255,255,255,0.85); padding: .6rem; border-radius: 10px; box-shadow: 0 6px 14px rgba(3,10,40,0.06); border:1px solid rgba(10,20,40,0.04) }
+#cores .card{ background: rgba(255,255,255,0.08); color:inherit; border:none; box-shadow:none }
+
+.paleta-grid{ display:flex; gap:.5rem; flex-wrap:wrap }
+.cor-item{ flex:1; min-width:70px; padding:.6rem; border-radius:8px; color:white; display:flex; align-items:center; justify-content:center; font-weight:600 }
+.cor-primaria{ background: #2b6ef6 }
+.cor-secundaria{ background: #66a3ff; color:#04223d }
+.cor-terciaria{ background: #7b61ff }
+.cor-acento{ background: #ffb86b; color:#04223d }
+.cor-neutra{ background: #f3f4f6; color:#04223d; font-weight:500 }
+
+/* Exemplos de sistemas de cores (2.1 - 2.5) */
+.cor-nome{ background: red; color: white }
+.cor-hex{ background: #3498db; color: white }
+.cor-rgb{ background: rgb(46,204,113); color: white }
+.cor-rgba{ background: rgba(155,89,182,0.7); color: white }
+.cor-hsl{ background: hsl(48,89%,60%); color: #04223d }
+
+/* Tipografia (3.x) */
+.tipo-exemplo{ padding:.6rem; border-radius:8px; background: rgba(0,0,0,0.03) }
+.tipo-roboto{ font-family: var(--font-sans) }
+.tipo-playfair{ font-family: var(--font-serif); font-style: normal }
+.peso-light{ font-weight:300 }
+.peso-normal{ font-weight:400 }
+.peso-bold{ font-weight:700 }
+.tamanho-14{ font-size:14px }
+.tamanho-16{ font-size:16px }
+.tamanho-18{ font-size:18px }
+.tamanho-24{ font-size:24px }
+.linha-compacta{ line-height:1.2 }
+.linha-normal{ line-height:1.5 }
+.linha-ampla{ line-height:2 }
+.texto-italico{ font-style: italic }
+.texto-maiusculo{ text-transform: uppercase }
+.texto-sub{ text-decoration: underline }
+
+/* Backgrounds (4.x) */
+.bg-cor{ background-color: #f87171; color: white }
+.bg-imagem{ background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=800&q=60'); background-size: auto; background-position: center; background-repeat: no-repeat; color: white }
+.bg-cover{ background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=60'); background-size: cover; background-position: center; background-repeat: no-repeat; color: white }
+.bg-contain{ background-image: url('https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=800&q=60'); background-size: contain; background-position: center; background-repeat: no-repeat; color: #04223d }
+
+/* Background positions & repeat examples */
+.pos-item{ padding:.9rem; border-radius:8px; color: white; min-height:60px; display:flex; align-items:center; justify-content:center }
+.bg-pos-center{ background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=400&q=60'); background-position:center; background-size:cover; background-repeat:no-repeat }
+.bg-pos-top{ background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=400&q=60'); background-position:top; background-size:cover; background-repeat:no-repeat }
+.bg-pos-bottom{ background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=400&q=60'); background-position:bottom; background-size:cover; background-repeat:no-repeat }
+.bg-pos-left{ background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=400&q=60'); background-position:left; background-size:cover; background-repeat:no-repeat }
+.bg-pos-right{ background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=400&q=60'); background-position:right; background-size:cover; background-repeat:no-repeat }
+
+/* Demonstrando repeat types */
+.bg-repeat-x{ background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png'); background-repeat: repeat-x; background-size: auto }
+.bg-repeat-y{ background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png'); background-repeat: repeat-y }
+.bg-no-repeat{ background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png'); background-repeat: no-repeat; background-position:center }
+
+/* Multiple backgrounds (overlay gradient + image) */
+.bg-multiple{ background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=60'); background-size: cover; background-position:center }
+
+/* Gradientes (5.x) */
+.grad-linear-2{ background: linear-gradient(to right, #667eea, #764ba2); color: white }
+.grad-linear-3{ background: linear-gradient(to right, #f093fb, #f5576c, #ffd140); color: #04223d }
+.grad-linear-diagonal{ background: linear-gradient(45deg, #FA8BFF, #2BD2FF, #2BFF88); color:#04223d }
+.grad-radial{ background: radial-gradient(circle, #667eea, #764ba2); color: white }
+.grad-complexo{ background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); color:white }
+.grad-radial-complexo{ background: radial-gradient(circle at top left, #FA8BFF, #2BD2FF, #2BFF88); color:#04223d }
+
+/* Pequenos ajustes de contraste quando necessário */
+.secao code{ display:block; padding:.4rem; background: rgba(0,0,0,0.04); border-radius:6px; font-family:monospace }
+
+/* Gradientes showcase */
+.gradientes-showcase{ display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:.8rem }
+.gradiente-item{ padding:.6rem; border-radius:8px; background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(0,0,0,0.04)); color:inherit }
+
+/* Footer */
+.footer-principal{ max-width: var(--max-width); margin: 1.5rem auto 0; color: rgba(255,255,255,0.95); text-align:center; font-size:0.95rem }
+
+/* Utilitários */
+.muted{ color: var(--muted) }
+.kbd{ font-family: monospace; background: rgba(0,0,0,0.06); padding: .15rem .4rem; border-radius:6px }
+
+/* Responsividade */
+@media (max-width: 720px){
+  body{ padding:1rem }
+  .container{ grid-template-columns: 1fr }
+  .header-principal h1{ font-size:1.2rem }
+  .secao{ padding:.9rem }
+}
+
+/* Fim */
 
 
 
